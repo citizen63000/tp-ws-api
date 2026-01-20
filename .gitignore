@@ -56,3 +56,7 @@
 .phpunit
 ###< symfony/phpunit-bridge ###
 /docker/data/
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
