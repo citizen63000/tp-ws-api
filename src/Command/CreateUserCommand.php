@@ -3,7 +3,6 @@
 namespace App\Command;
 
 use App\Entity\User\User;
-use EasyApiBundle\Entity\User\AbstractUser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

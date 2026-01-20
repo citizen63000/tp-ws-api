@@ -6,14 +6,14 @@ use App\Entity\Book;
 use App\Form\BookType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
 use Nelmio\ApiDocBundle\Annotation\Model;
+use Symfony\Component\Routing\Attribute\Route;
 
 /**
- * @Route("/book", name="book")
  * @OA\Tag(name="Books")
  */
+#[Route(path: '/book', name: 'book')]
 class BookController extends AbstractSimpleApiController
 {
 }

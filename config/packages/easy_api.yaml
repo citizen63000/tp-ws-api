@@ -4,7 +4,5 @@ easy_api:
   user_tracking:
     enable: true
     connection_history_class: App\Entity\User\ConnectionHistory
-  inheritance:
-    controller: App\Controller\AbstractSimpleApiController
   tests:
     debug: '%tests_debug%'

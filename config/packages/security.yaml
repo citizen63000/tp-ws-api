@@ -1,6 +1,10 @@
 security:
     erase_credentials: false
-    encoders:
+    enable_authenticator_manager: true
+    password_hashers:
+        App\Entity\user\User:
+            algorithm: bcrypt
+            cost: 15
         default:
             algorithm: bcrypt
             cost: 15
@@ -9,7 +13,9 @@ security:
         users_in_memory: { memory: null }
         # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
         app_user_provider:
-            id: app.user_provider
+            entity:
+                class: App\Entity\User
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -32,12 +38,12 @@ security:
         token-refresh:
             pattern:  ^/token/refresh
             stateless: true
-            anonymous: true
+            security: false
 
         reset-password:
             pattern:  ^/reset-password
             stateless: true
-            anonymous: true
+            security: false
 
         update-password:
             pattern:  ^/update-password
@@ -47,7 +53,7 @@ security:
             pattern:   ^/authenticate
             provider: app_user_provider
             stateless: true
-            anonymous: true
+            security: false
             json_login:
                 check_path:          /authenticate
                 username_path:       username
@@ -59,9 +65,9 @@ security:
             pattern:   ^/
             provider: app_user_provider
             stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+            custom_authenticators:
+#                    - lexik_jwt_authentication.jwt_token_authenticator
+                    - lexik_jwt_authentication.jwt_manager
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:

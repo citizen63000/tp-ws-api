@@ -3,23 +3,20 @@
 namespace App\Entity\User;
 
 use Doctrine\ORM\Mapping as ORM;
-use EasyApiJwtAuthentication\Entity\AbstractExtendedUser;
+use Doctrine\ORM\Mapping\UniqueConstraint;
+use EasyApiJwtAuthentication\Entity\AbstractUser;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-/**
- * User.
- * @ORM\Entity()
- * @ORM\Table(name="`user`")
- */
-class User extends AbstractExtendedUser
+#[ORM\Table(name: '`user`')]
+#[UniqueConstraint(name: 'username', columns: ['username'])]
+class User extends AbstractUser
 {
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Groups(['user_light'])]
     protected ?string $firstname = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Groups(['user_light'])]
     protected ?string $lastname = null;
 
     /**
@@ -54,4 +51,8 @@ class User extends AbstractExtendedUser
         $this->lastname = $lastname;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return $this->getUsername();
+    }
 }

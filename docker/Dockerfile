@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
-ENTRYPOINT ["usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
 RUN apt update && apt upgrade -y
 
@@ -29,5 +29,7 @@ RUN apt install -q -y php libapache2-mod-php php-zip php-curl php-mysql php-xml
 RUN wget https://getcomposer.org/download/latest-stable/composer.phar
 RUN mv composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
+
+WORKDIR /var/www/app
 
 

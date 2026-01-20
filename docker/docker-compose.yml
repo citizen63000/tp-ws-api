@@ -12,8 +12,8 @@ services:
           - local
     tp-ws-api:
         container_name: "tp-ws-api"
-        image: citizen63000/ubuntu-php-mariadb:1.0
-#        build: .
+#        image: citizen63000/ubuntu-php-mariadb:1.0
+        build: .
         depends_on:
             - tp-ws-db
         ports:

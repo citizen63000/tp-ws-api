@@ -5,29 +5,20 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use EasyApiBundle\Entity\AbstractBaseEntity;
 
-/**
- * @ORM\Entity()
- */
+#[ORM\Entity]
+#[ORM\Table(name: '`user`')]
 class Book extends AbstractBaseEntity
 {
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: 'string', nullable: false)]
     protected ?string $title = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: 'string', nullable: false)]
     protected ?string $author = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
     protected ?string $summary = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
+    #[ORM\Column(type: 'integer', nullable: true)]
     protected ?int $year = null;
 
     /**

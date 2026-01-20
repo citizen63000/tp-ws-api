@@ -7,25 +7,21 @@ use App\Entity\User\User;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Annotations as OA;
+use Symfony\Component\Routing\Attribute\Route;
 
 /**
- * @Route ("/user", name="api_user")
  * @OA\Tag(name="User")
  */
+#[Route(path: '/user', name: 'api_user')]
 class UserController extends AbstractSimpleApiController
 {
-    public const entityClass = User::class;
-    public const serializationGroups = ['user_short'];
-    public const serializationAttributes = ['id', 'username', 'email', 'createdAt', 'updatedAt'];
+    public const ?string entityClass = User::class;
+    public const ?array serializationGroups = ['user_short'];
+    public const ?array serializationAttributes = ['id', 'username', 'email', 'createdAt', 'updatedAt'];
 
     /**
-     * Get me
-     *
-     * @Route("/me", methods={"GET"}, name="_get_me", )
-     *
      * @OA\Response(
      *     response=200,
      *     description="Successful operation",
@@ -37,10 +33,10 @@ class UserController extends AbstractSimpleApiController
      * @OA\Response(response="415", ref="#/components/schemas/415"),
      * @OA\Response(response="422", ref="#/components/schemas/422")
      *
-     * @return Response
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
+    #[Route(path: '/me', name: '_get_me', methods: ['GET'])]
     public function getMeAction(): Response
     {
         $serializer = $this->container->get('serializer');
