@@ -208,12 +208,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/citizen63000/easy-api-jwt-authentication.git",
-                "reference": "5ff1600529ebdb9a8dc81e12e48b8aa22db85ba5"
+                "reference": "00905eb24786054dc0a3d0f1a55fefe98f7454f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/citizen63000/easy-api-jwt-authentication/zipball/5ff1600529ebdb9a8dc81e12e48b8aa22db85ba5",
-                "reference": "5ff1600529ebdb9a8dc81e12e48b8aa22db85ba5",
+                "url": "https://api.github.com/repos/citizen63000/easy-api-jwt-authentication/zipball/00905eb24786054dc0a3d0f1a55fefe98f7454f7",
+                "reference": "00905eb24786054dc0a3d0f1a55fefe98f7454f7",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "issues": "https://github.com/citizen63000/easy-api-jwt-authentication/issues",
                 "source": "https://github.com/citizen63000/easy-api-jwt-authentication/tree/main"
             },
-            "time": "2026-01-20T14:46:30+00:00"
+            "time": "2026-01-20T15:46:17+00:00"
         },
         {
             "name": "doctrine/annotations",

@@ -14,7 +14,7 @@ security:
         # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\User\User
                 property: username
     firewalls:
         login:
