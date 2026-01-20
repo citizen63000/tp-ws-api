@@ -2,7 +2,7 @@ easy_api:
   authentication: true
   user_class: App\Entity\User\User
   user_tracking:
-    enable: true
+    enable: false
     connection_history_class: App\Entity\User\ConnectionHistory
   tests:
     debug: '%tests_debug%'

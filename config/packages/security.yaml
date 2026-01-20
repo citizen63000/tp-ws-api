@@ -66,6 +66,7 @@ security:
             pattern:   ^/
             provider: app_user_provider
             stateless: true
+            jwt: ~
 #            custom_authenticators:
 #                    - lexik_jwt_authentication.jwt_token_authenticator
 #                    - lexik_jwt_authentication.jwt_manager
