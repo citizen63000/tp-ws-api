@@ -2,9 +2,8 @@ api_login_check:
   path: /authenticate
   methods: [POST]
 
-gesdinet_jwt_refresh_token:
-  path:     /token/refresh
-  controller: gesdinet.jwtrefreshtoken:refresh
+api_refresh_token:
+  path: /token/refresh
   methods: [POST]
 
 authentication_logout:

@@ -27,8 +27,6 @@ security:
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        #            refresh_jwt:
-        #                check_path: /api/token/refresh # or, you may use the `api_refresh_token` route name
 
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -48,10 +46,12 @@ security:
             methods: [GET]
             security: false
 
-        token-refresh:
-            pattern:  ^/token/refresh
+        api_token_refresh:
+            pattern: ^/token/refresh$
             stateless: true
-            security: false
+            provider: app_user_provider
+            refresh_jwt:
+                check_path: api_refresh_token
 
         reset-password:
             pattern:  ^/reset-password
@@ -66,10 +66,12 @@ security:
             pattern:   ^/
             provider: app_user_provider
             stateless: true
+            entry_point: jwt
             jwt: ~
-#            custom_authenticators:
-#                    - lexik_jwt_authentication.jwt_token_authenticator
-#                    - lexik_jwt_authentication.jwt_manager
+            refresh_jwt:
+                check_path: api_refresh_token
+                provider: app_user_provider
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:

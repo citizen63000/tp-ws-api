@@ -138,21 +138,36 @@ nelmio_api_doc:
                     required: true
                     schema:
                         type: "string"
-#                # queries
-#                createData:
-#                    name: data
-#                    in: "body"
-#                    description: "Create data."
-#                    required: true
-#                updateData:
-#                    name: data
-#                    in: "body"
-#                    description: "Update data."
-#                    required: true
         paths:
             /token/refresh:
                 post:
                     tags: [ 'Authentication' ]
+                    summary: 'Rafraîchir le token JWT.'
+                    description: 'Permet d’obtenir un nouveau token JWT à partir d’un refresh token valide.'
+                    security:
+                        - { }
+                    requestBody:
+                        description: 'Refresh token'
+                        required: true
+                        content:
+                            application/json:
+                                schema:
+                                    type: object
+                                    required: [ 'refresh_token' ]
+                                    properties:
+                                        refresh_token:
+                                            type: string
+                                            description: 'Refresh token valide.'
+                                            example: 'fdb8fdbecf1d03ce5e6125c067733c0d51de209c'
+                    responses:
+                        200:
+                            description: 'Token rafraîchi avec succès.'
+                            content:
+                                application/json:
+                                    schema:
+                                        $ref: '#/components/schemas/security_auth_refresh'
+                        401:
+                            $ref: '#/components/schemas/401'
             /authenticate:
                 post:
                     tags: [ 'Authentication' ]
