@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use EasyApiBundle\Entity\AbstractBaseEntity;
 
 #[ORM\Entity]
-#[ORM\Table(name: '`user`')]
+#[ORM\Table(name: '`book`')]
 class Book extends AbstractBaseEntity
 {
     #[ORM\Column(type: 'string', nullable: false)]
