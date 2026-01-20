@@ -162,10 +162,6 @@ nelmio_api_doc:
                     responses:
                         200:
                             description: 'Token rafraîchi avec succès.'
-                            content:
-                                application/json:
-                                    schema:
-                                        $ref: '#/components/schemas/security_auth_refresh'
                         401:
                             $ref: '#/components/schemas/401'
             /authenticate:
