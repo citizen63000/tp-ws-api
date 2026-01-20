@@ -17,6 +17,19 @@ security:
                 class: App\Entity\User
                 property: username
     firewalls:
+        login:
+            pattern: ^/authenticate
+            provider: app_user_provider
+            stateless: true
+            json_login:
+                check_path: /authenticate
+                username_path: username
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        #            refresh_jwt:
+        #                check_path: /api/token/refresh # or, you may use the `api_refresh_token` route name
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -49,28 +62,17 @@ security:
             pattern:  ^/update-password
             security: false
 
-        authentication:
-            pattern:   ^/authenticate
-            provider: app_user_provider
-            stateless: true
-            security: false
-            json_login:
-                check_path:          /authenticate
-                username_path:       username
-                password_path:       password
-                success_handler:     lexik_jwt_authentication.handler.authentication_success
-                failure_handler:     lexik_jwt_authentication.handler.authentication_failure
-
         api:
             pattern:   ^/
             provider: app_user_provider
             stateless: true
-            custom_authenticators:
+#            custom_authenticators:
 #                    - lexik_jwt_authentication.jwt_token_authenticator
-                    - lexik_jwt_authentication.jwt_manager
+#                    - lexik_jwt_authentication.jwt_manager
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/$,                                      roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https'  }
         - { path: ^/(_(profiler|wdt)|css|images|js)/,       roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https'  }
         - { path: ^/api-doc,                                roles: IS_AUTHENTICATED_ANONYMOUSLY   }

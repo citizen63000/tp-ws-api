@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 use EasyApiJwtAuthentication\Entity\AbstractUser;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ORM\Entity]
 #[ORM\Table(name: '`user`')]
 #[UniqueConstraint(name: 'username', columns: ['username'])]
 class User extends AbstractUser
