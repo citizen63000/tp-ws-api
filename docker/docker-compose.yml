@@ -12,7 +12,7 @@ services:
           - local
     tp-ws-api:
         container_name: "tp-ws-api"
-        image: citizen63000/ubuntu-php-mariadb:2.0
+        image: citizen63000/ubuntu-php-mariadb:2.1
 #        build: .
         depends_on:
             - tp-ws-db
