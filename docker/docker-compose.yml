@@ -1,7 +1,7 @@
 services:
     tp-ws-db:
         container_name: tp-ws-db
-        image: mariadb:10.3
+        image: mariadb:10.6
         ports:
             - "3306:3306"
         environment:
